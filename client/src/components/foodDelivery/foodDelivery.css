@@ -1,0 +1,95 @@
+.foodDelivery{
+    margin-top: 30px;
+}
+.foodDelivery h2{
+    font-size: max(2vw,24px);
+    font-weight: 600;
+}
+.food-display-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    margin-top: 30px;
+    gap: 30px;
+    row-gap: 50px;
+}
+.food-item{
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #00000015;
+    transition: 0.3s;
+    animation: fadeIn 2s;
+    cursor: pointer;
+}
+.food-item .food-item-image{
+    width: 100%;
+    height: 250px;
+    border-radius: 15px 15px 0px 0px;
+}
+.food-item .food-item-info{
+    padding: 20px;
+}
+.food-item-name-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.food-item-name-rating p{
+    font-size: 20px;
+    font-weight: 500;
+}
+.food-item-name-rating .food-item-stars-icon{
+    color: rgb(204, 204, 19);
+    width: 100px;
+}
+.food-item-desc{
+    color: #676767;
+    font-size: 12px;
+}
+.food-item-price{
+    color: tomato;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 10px 0px;
+}
+.food-item-img-container{
+    position: relative;
+}
+.food-item-img-container .add{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: white;
+}
+.food-item-img-container .food-item-counter{
+    display: flex;
+    align-items: center;
+    position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background-color: white;
+        gap: 10px;
+        padding: 6px;
+        border-radius: 50px;
+}
+.food-item-counter .minusOne{
+    background-color: rgba(255, 99, 71, 0.549);
+    border-radius: 50px;
+    padding: 5px;
+}
+.food-item-counter .minusOne:hover{
+    background-color: tomato;
+}
+.food-item-counter .addOne:hover{
+    background-color: green;
+}
+.food-item-counter .addOne{
+    background-color: rgba(0, 128, 0, 0.458);
+    padding: 5px;
+        border-radius: 50px;
+}

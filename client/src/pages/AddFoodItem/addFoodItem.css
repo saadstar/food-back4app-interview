@@ -1,0 +1,50 @@
+.addFoodItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.addFoodItem h1{
+    font-size: 25px;
+    font-weight: 500;    
+}
+.addFoodItem .inputsContainer{
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 30px;    
+}
+.addFoodItem .inputsContainer .inputContainer{
+    display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 60vw;
+}
+.addFoodItem .inputsContainer .inputContainer label{
+    font-size: 16px;
+        font-weight: 400;
+}
+.addFoodItem .inputsContainer .inputContainer input{
+padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 18px;
+    color: #393939;
+}
+.addFoodItem form button{
+    cursor: pointer;
+    border: 1px solid tomato;
+    background-color: rgb(222, 222, 222);
+    color: black;
+    border-radius: 10px;
+    width: 60vw;
+    padding: 10px;
+    font-weight: bold;
+    transition: 0.4s;
+}
+.addFoodItem form button:hover{
+    background-color: rgb(233, 170, 170);
+    border: 1px solid #ddd;
+}
