@@ -1,7 +1,7 @@
 const Parse = require("parse/node");
 const express = require("express");
 const app = express();
-const createFood = require("./controllers/FoodController");
+const { createFood, getAllFoods } = require("./controllers/FoodController");
 const cors = require("cors");
 
 Parse.serverURL = "https://parseapi.back4app.com"; 
@@ -29,3 +29,5 @@ Parse.initialize(
 );
 console.log("Server Running...");
 createFood();
+getAllFoods();
+

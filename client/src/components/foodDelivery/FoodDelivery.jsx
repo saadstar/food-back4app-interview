@@ -1,33 +1,42 @@
 import React, {  useEffect, useState} from 'react';
 import "./foodDelivery.css";
 import { FoodItem } from './FoodItem';
-import axios from "axios"
+import Parse from 'parse';
 
 export const FoodDelivery = ({category}) => {
-    const url="https://parseapi.back4app.com/classes/Food"
     const [foodData, setFoodData] = useState([]);
-    const fetchFood = async () => {
-        try {
-            const res = await axios.get(url, {
-                headers: {
-                    "X-Parse-Application-Id": "se2hrDVab4ZGXuVlYSzcfUz8EVTb4mUlJWJZZcKq",
-                    "X-Parse-REST-API-Key": "N45ps6WnFxY9gYfbDyzO9b3MBLnobHY1VrUtpNus",
-                }
+    
+    useEffect(()=>{ 
+        const ftchData = async () => {
+            const query = new Parse.Query('Food');
+            query.select(["id","name","image","category","price","description"])
+            const results = await query.find();
+            setFoodData(results);
+            const subscription =await query.subscribe();
+            subscription.on('open', () => {
+              console.log('Subscription opened');
             });
-            setFoodData(res.data.results);
-        } catch (err) {
-            console.log(err);
+            subscription.on('create', (object) => {
+              setFoodData((prevItems) => [...prevItems, object]);
+            });
+            subscription.on('update', (object) => {
+              setFoodData((prevItems) => prevItems.map((item) => item.id === object.id ? object : item));
+            });
+            subscription.on('delete', (object) => {
+              setFoodData((prevItems) => prevItems.filter((item) => item.id !== object.id));
+            });            
+            return () => {
+              subscription.unsubscribe();
+                    };
         }
-    }
-    useEffect(() => {
-        fetchFood();
-    })
+        ftchData();
+    });
   return (
       <div className='foodDelivery' id="foodDelivery">
           <h2>{category==="All"?`Top Dishes near you.`:category}</h2>
           <div className="food-display-list">
               {foodData.filter((ele)=> category!=="All"? ele.category=== category:ele).map((item, index) => {
-                  return <FoodItem item={ item} index={index} />
+                  return <FoodItem item={ item} index={index} key={item.id} />
               })}
           </div>
     </div>

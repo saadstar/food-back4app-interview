@@ -6,9 +6,9 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export const FoodItem = ({item,index}) => {
       const [count, setCount] = useState(0);
   return (
-   <div className="food-item" key={index} id={item.objectId}>
+   <div className="food-item" key={item.get("objectId")} >
                           <div className="food-item-img-container">
-                              <img src={item.image} alt="food-item" className='food-item-image' />
+                              <img src={item.get("image")} alt="food-item" className='food-item-image' />
                               {!count 
                                   ? <AddIcon onClick={ ()=>setCount(prev=>prev+1)} className='add'/>
                                   : <div className='food-item-counter'>
@@ -20,7 +20,7 @@ export const FoodItem = ({item,index}) => {
                           </div>
                           <div className="food-item-info">
                               <div className="food-item-name-rating">
-                                  <p>{item.name}</p>
+                                  <p>{item.get("name")}</p>
                                   <div className="food-item-stars-icon">
                                       <StarIcon/>
                                       <StarIcon/>
@@ -28,8 +28,8 @@ export const FoodItem = ({item,index}) => {
                                       <StarIcon/>
                                   </div>
                               </div>
-                                  <p className='food-item-desc'>{item.description }</p>
-                                  <p className='food-item-price'>${item.price }</p>
+                                  <p className='food-item-desc'>{item.get("description") }</p>
+                                  <p className='food-item-price'>${item.get("price") }</p>
                           </div>
                   </div>
   )
